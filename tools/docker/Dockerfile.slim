@@ -44,10 +44,11 @@ COPY run_server.py ./
 COPY scripts/utils/uv_wrapper.py ./uv_wrapper.py
 COPY scripts/utils/memory_wrapper_uv.py ./memory_wrapper_uv.py
 
-# Copy Docker entrypoint scripts
+# Copy Docker entrypoint scripts and fix line endings (Windows CRLF -> LF)
 COPY tools/docker/docker-entrypoint.sh /usr/local/bin/
 COPY tools/docker/docker-entrypoint-persistent.sh /usr/local/bin/
 COPY tools/docker/docker-entrypoint-unified.sh /usr/local/bin/
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint*.sh
 
 # Install minimal dependencies (CPU-only, no PyTorch)
 RUN python -m uv pip install \
@@ -67,6 +68,7 @@ RUN python -m uv pip install \
     "PyPDF2>=3.0.0" \
     "chardet>=5.0.0" \
     "click>=8.0.0" \
+    "aiosqlite>=0.19.0" \
     && python -m uv pip install -e . --no-deps
 
 # Conditionally pre-download ONNX embedding models
