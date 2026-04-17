@@ -95,9 +95,11 @@ RUN chmod a+rw /dev/stdin /dev/stdout /dev/stderr && \
 # Add volume mount points for data persistence
 VOLUME ["/app/sqlite_db", "/app/backups"]
 
-# Expose the port (if needed)
+# Force HTTP mode and anonymous access for Zeabur deployment
+ENV MCP_MODE=http
+ENV MCP_ALLOW_ANONYMOUS_ACCESS=true
+
 EXPOSE 8000
 
-# Use the unified entrypoint script by default
-# Can be overridden with docker-entrypoint.sh for backward compatibility
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint-unified.sh"]
+# Run HTTP server directly (bypass entrypoint script for reliability)
+CMD ["python", "/app/run_server.py"]

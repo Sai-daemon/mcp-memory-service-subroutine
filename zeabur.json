@@ -1,6 +1,6 @@
 {
   "build": {
     "type": "dockerfile",
-    "dockerfile": "tools/docker/Dockerfile.slim"
+    "dockerfile": "Dockerfile"
   }
 }
