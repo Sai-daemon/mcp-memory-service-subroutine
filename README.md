@@ -1,4 +1,23 @@
-# mcp-memory-service
+# mcp-memory-service-subroutine
+
+Fork of the MCP Memory Service [repo](https://github.com/insidedeveloper888/mcp-memory-service) locked at version 10.36.2, for integration into AI projects. 
+
+If you are interested in the MCP server for your LLM or agent, download from them.
+
+If you are interested in something which integrates into your project/agent more tightly and want it locked at version 10.36.2, then my repo might be for you. 
+
+
+
+
+
+
+
+
+
+
+
+Original Readme contents below. I am not responsible for their contents.
+
 
 ## Persistent Shared Memory for AI Agent Pipelines
 
